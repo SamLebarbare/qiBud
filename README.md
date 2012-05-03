@@ -1,17 +1,4 @@
-# qiBud - Collaboration Hub Fundation
-<pre>
-             ,-. 
-    ,     ,-.   ,-. 
-   / \   (   )-(   ) 
-   \ |  ,.>-(   )-< 
-    \|,' (   )-(   ) 
-     Y ___`-'   `-' 
-     |/__/   `-' 
-     | 
-     | 
-     |    -qiBud- 
-  ___|_____________ 
-</pre>
+# qiBud - Collaboration Hub Foundation
 
 
 ## Pre-Arch
