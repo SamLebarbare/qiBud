@@ -1,0 +1,4 @@
+self: play -> core-client 0.1
+
+require:
+    - play

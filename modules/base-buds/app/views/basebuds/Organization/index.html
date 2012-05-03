@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+<div class="hero-unit">
+    <h6>Buds</h6>    
+</div>
+<div class="container">
+    #{list items:allBuds, as:'b'}
+    <div class="hero-unit">
+        <h3>${b.date}: ${b.title} / ${b.subject}</h3>
+        <a href="@{Buds.show(b.identifier)}">${b.identifier}</a> 
+    </div>   
+    #{/list}
+</div>

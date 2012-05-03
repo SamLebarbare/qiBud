@@ -1,0 +1,5 @@
+# Default core-client messages
+# You can specialize this file for each language.
+# For exemple, for french create a messages.fr file
+
+#core-client.name=core-client

@@ -1,0 +1,9 @@
+createAbud=Créer un bud
+licensedUnderThe=Sous licence
+backToTop=Retour à la page
+gg=Bien joué!
+longLife=Longue vie à ce bud!
+oops=Oops!
+lackOfInfo=Ce bud, manque d'information pour grandir
+mybud=Mon bud
+title=Titre

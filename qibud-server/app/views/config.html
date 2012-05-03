@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        #{header /}
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span3">
+                    <div class="well" style="padding: 8px 0;">
+                        <ul class="nav nav-list">
+                        <li class="nav-header">qibud server</li> 
+                        <li>
+                            <a href="@{Core.index()}"><i class=" icon-home"></i>Dashboard
+                            </a>
+                          </li>
+                          <li class="nav-header">configuration</li> 
+                          <li>
+                            <a href="@{Core.packages()}"><i class="icon-gift"></i>Bud Packages
+                            </a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span4">
+                #{doLayout /}    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

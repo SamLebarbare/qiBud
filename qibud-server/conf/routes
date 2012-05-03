@@ -1,0 +1,8 @@
+*       /                                       module:base
+GET     /                                       Auth.index
+GET     /core                                   Core.index
+GET     /core/packages                          Core.packages
+POST    /core/modules/details                   Core.moduleDetails                           
+GET     /favicon.ico                            404
+GET     /public/                                staticDir:public
+

@@ -1,0 +1,24 @@
+# This file defines all module routes (Higher priority routes first)
+#
+# import these routes in the main app as :
+# *     /                       module:base-bud
+#
+# ~~~~
+
+GET     /basebud/install              basebuds.BaseBuds.install
+GET     /basebud/uninstall            basebuds.BaseBuds.unInstall
+
+
+
+
+#{basebuds.types}
+GET			/?  
+GET			/${type.controllerName}	                                       ${type.controllerClass.name.substring(12).replace('$','')}.index
+GET			/${type.controllerName}/?                                      ${type.controllerClass.name.substring(12).replace('$','')}.index
+GET			/${type.controllerName}/entity/{uid}                           ${type.controllerClass.name.substring(12).replace('$','')}.showFromUid
+GET			/${type.controllerName}/show                                   ${type.controllerClass.name.substring(12).replace('$','')}.show
+GET			/${type.controllerName}/attachment                             ${type.controllerClass.name.substring(12).replace('$','')}.getAttachment
+GET                     /${type.controllerName}/add                                    ${type.controllerClass.name.substring(12).replace('$','')}.add
+POST                    /${type.controllerName}/create                                 ${type.controllerClass.name.substring(12).replace('$','')}.create
+GET                     /${type.controllerName}/delete                                 ${type.controllerClass.name.substring(12).replace('$','')}.delete
+#{/basebuds.types}

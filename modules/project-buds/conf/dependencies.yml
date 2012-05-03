@@ -1,0 +1,13 @@
+self: play -> project-buds 0.1
+
+require:
+    - play
+    - bud -> core-client 0.1
+    - bud -> base-buds 0.1
+
+repositories:
+    - budModules:
+        type:       local
+        artifact:   "${application.path}/../[module]"
+        contains:
+            - bud -> *

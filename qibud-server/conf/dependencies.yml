@@ -1,0 +1,26 @@
+# Application dependencies
+
+require:
+    - play
+    - org.neo4j -> neo4j 1.6.1
+    - play -> morphia [1.2.4,)
+    - bud -> budstore 0.1
+    - bud -> core-client 0.1
+    - bud -> base-buds 0.1
+    - bud -> project-buds 0.1
+    
+    
+
+repositories:
+    - budModules:
+        type:       local
+        artifact:   "${application.path}/../modules/[module]"
+        contains:
+            - bud -> *
+  
+    - cathedralModules:
+        type:       local
+        artifact:   "${application.path}/../../cathedral/modules/[module]"
+        contains:
+            - cathedral -> *
+
