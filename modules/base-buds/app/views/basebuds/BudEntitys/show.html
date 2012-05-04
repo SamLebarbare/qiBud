@@ -1,13 +1,13 @@
 #{extends 'main.html' /}
 #{if flash.success}
     <div class="alert-message success">
-    <a class="close" href="@{basebuds.Buds.show(r.id)}">×</a>
+    <a class="close" href="@{basebuds.BudEntitys.show(r.id)}">×</a>
     <p><strong>Bien joué!</strong> ${flash.success}</p>
     </div>
 #{/if}
 #{if flash.error}
     <div class="alert-message error">
-    <a class="close" href="@{basebuds.Buds.show(r.id)}">×</a>
+    <a class="close" href="@{basebuds.BudEntitys.show(r.id)}">×</a>
     <p><strong>Oops =/</strong> ${flash.error}</p>
     </div>
 #{/if}
@@ -22,7 +22,7 @@
 <div class="hero-unit">
     <h1>${b.entity.title}</h1>
     <p>${b.entity.content}</p>
-    #{if b.entity.haveAttachment}<a href="@{basebuds.Buds.getAttachment(b.uri)}">Attachment</a>#{/if}
+    #{if b.entity.haveAttachment}<a href="@{basebuds.BudEntitys.getAttachment(b.uri)}">Attachment</a>#{/if}
 </div>
 <section id="comments">
     <div class="page-header">

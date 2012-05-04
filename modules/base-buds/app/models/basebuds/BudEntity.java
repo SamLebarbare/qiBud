@@ -16,10 +16,10 @@ import play.db.jpa.GenericModel;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public class Bud extends GenericModel {
+public class BudEntity extends GenericModel {
 
     @Id
-    public String identifier; //URI
+    public String identifier;
     public String type;
     public String title;
     public Date postedAt;

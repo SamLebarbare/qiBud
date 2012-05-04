@@ -10,11 +10,11 @@ package models.projectbuds;
  * @author sloup
  */
 import javax.persistence.*;
-import models.basebuds.Bud;
+import models.basebuds.BudEntity;
 import models.basebuds.Person;
 
 @Entity
-public class Action extends Bud {
+public class Action extends BudEntity {
 
 
 

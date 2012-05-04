@@ -7,10 +7,10 @@ package models.projectbuds;
 
 
 import javax.persistence.*;
-import models.basebuds.Bud;
+import models.basebuds.BudEntity;
 
 @Entity
-public class Idea extends Bud {
+public class Idea extends BudEntity {
 
     public String source; //URI
 

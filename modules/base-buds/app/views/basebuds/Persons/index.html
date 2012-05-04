@@ -1,4 +1,4 @@
 #{extends 'face.html' /}
     #{list items:buds, as:'b'}
-        <a href="${b.identifier}"</a>${b.title} ${b.haveAttachment}<a href="@{basebuds.Buds.delete(b.identifier)}">delete</a><br>  
+        <a href="${b.identifier}"</a>${b.title} ${b.haveAttachment}<a href="@{basebuds.BudEntitys.delete(b.identifier)}">delete</a><br>  
     #{/list}

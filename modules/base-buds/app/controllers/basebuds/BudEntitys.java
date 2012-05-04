@@ -6,11 +6,11 @@ package controllers.basebuds;
 
 import budstore.BudStore;
 import java.io.File;
-import budstore.BudStoreEntity;
+import budstore.Bud;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
-import models.basebuds.Bud;
+import models.basebuds.BudEntity;
 import play.data.validation.Required;
 import play.data.validation.Validation;
 
@@ -18,11 +18,11 @@ import play.data.validation.Validation;
  *
  * @author Samuel Loup aka Sam Le Barbare
  */
-public class Buds extends BaseBuds {
+public class BudEntitys extends BaseBuds {
 
     public static void index()
     {   
-        List<Bud> buds = Bud.findAll();
+        List<BudEntity> buds = BudEntity.findAll();
         render(buds);
     }
     
@@ -33,7 +33,7 @@ public class Buds extends BaseBuds {
     
     public static void showFromUID(@Required String uid)
     {
-        show(BudStore.getInstance().getIdentifierFromUID("buds",uid));
+        show(uid);
     }
     
     public static void show(@Required String uri)
@@ -43,7 +43,7 @@ public class Buds extends BaseBuds {
             params.flash();
             index();
         }
-        BudStoreEntity b = new BudStoreEntity(uri);
+        Bud b = new Bud(uri);
         render(b);
     }
     
@@ -54,7 +54,7 @@ public class Buds extends BaseBuds {
             params.flash();
             index();
         }
-        BudStoreEntity bud = new BudStoreEntity(uri);
+        Bud bud = new Bud(uri);
         InputStream attachment = bud.attachment.attachment.get();
         
         renderBinary(attachment);
@@ -62,7 +62,7 @@ public class Buds extends BaseBuds {
     
     public static void delete(String uri)
     {
-        Bud b = Bud.findById(uri);
+        BudEntity b = BudEntity.findById(uri);
         BudStore.getInstance().delete(b);
         index();
     }
@@ -75,11 +75,11 @@ public class Buds extends BaseBuds {
             add();
         }
 
-        Bud newBud = new Bud();
+        BudEntity newBud = new BudEntity();
         newBud.type = "buds";
         newBud.title = budTitle;
         newBud.content = content;
-        newBud.identifier = BudStore.getInstance().setIdentifier(newBud.type);
+        newBud.identifier = BudStore.getInstance().newBudIdentity(newBud.type);
         newBud.postedAt = new Date();
         if(file!=null)
         {

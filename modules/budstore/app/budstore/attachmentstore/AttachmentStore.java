@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.basebuds.Bud;
+import models.basebuds.BudEntity;
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
@@ -72,7 +72,7 @@ public class AttachmentStore {
         return BudAttachment.findById(identifier);
     }
     
-    public void parseAndStorePDF(Bud b,File file)
+    public void parseAndStorePDF(BudEntity b,File file)
     {
         InputStream input;
         try 
@@ -116,7 +116,7 @@ public class AttachmentStore {
         
     }
     
-    public void storeAttachment(Bud b,File f)
+    public void storeAttachment(BudEntity b,File f)
     {
         System.out.println("Storing attachment...");
         if(f.getName().endsWith(".pdf"))

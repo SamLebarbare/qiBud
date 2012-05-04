@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
-import models.basebuds.Bud;
+import models.basebuds.BudEntity;
 import models.basebuds.Person;
 
 @Entity
-public class Choice extends Bud {
+public class Choice extends BudEntity {
 
     public String source; //URI
 

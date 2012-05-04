@@ -7,7 +7,8 @@ import budstore.graphstore.GraphStore;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
-import models.basebuds.Bud;
+import java.util.concurrent.atomic.AtomicLong;
+import models.basebuds.BudEntity;
 import play.Play;
 
 /**
@@ -24,39 +25,19 @@ public class BudStore {
         return INSTANCE;
     }
     
+    private final String IDENTITY_JVM_PREFIX = UUID.randomUUID().toString()+"-";
+    private final AtomicLong IDENTITY_JVM_COUNT = new AtomicLong( 0);
     
-    /* URI */
-    public String setIdentifier(String type)
+    public String newBudIdentity(String type)
     {
-        
-        /*
-         *   foo://username:password@example.com:8042/over/there/index.dtb?type=animal;name=ferret#nose
-          \ /   \________________/\_________/ \__/            \___/ \_/ \_____________________/ \__/
-           |           |               |       |                |    |           |                |
-           |       utilisateur        hôte    port              |    |        requête          fragment
-           |    \_______________________________/ \_____________|____|/
-        schéma                  |                         |     |    |
-           |                 domaine                    chemin  |    |
-           |                                                    |    |
-           |            chemin                     peut être interprété comme un nom de fichier
-           |   ___________|____________                              |
-          / \ /                        \                             |
-          urn:example:animal:ferrett:nose            peut être interprété comme une extension
-         */
-        return "http://"+ Play.configuration.get("http.address") + ":" + Play.configuration.get("http.port") + Play.configuration.get("http.path")+type+"/entity/"+UUID.randomUUID().toString();
-        
-    }
-    public String getIdentifierFromUID(String type,String uid)
-    {
-        return "http://"+ Play.configuration.get("http.address") + ":" + Play.configuration.get("http.port") + Play.configuration.get("http.path")+type+"/entity/"+uid;
+        return IDENTITY_JVM_PREFIX + IDENTITY_JVM_COUNT.getAndIncrement();
     }
     
-    
-    public Bud extract(Bud b)
+    public BudEntity extract(BudEntity b)
     {
         return null;
     }
-    public void store(Bud b,File f)
+    public void store(BudEntity b,File f)
     {
         //First save in the graphDB
         GraphStore.storeABud(b);
@@ -66,12 +47,12 @@ public class BudStore {
             AttachmentStore.getInstance().storeAttachment(b, f);
         }
     }
-    public void archive(Bud b)
+    public void archive(BudEntity b)
     {
         //TODO
     }
     
-    public void delete(Bud b)
+    public void delete(BudEntity b)
     {
         GraphStore.deleteABud(b.identifier);
         if(b.haveAttachment)
@@ -91,7 +72,7 @@ public class BudStore {
         List<BudAttachment> bas = BudAttachment.findAll();
         for(BudAttachment ba : bas)
         {
-            Bud bud = Bud.findById(ba.identifier);
+            BudEntity bud = BudEntity.findById(ba.identifier);
             if(bud!=null)
             {
                 bud.haveAttachment = true;

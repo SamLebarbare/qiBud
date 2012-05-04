@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Organization extends Bud {
+public class Organization extends BudEntity {
  
 public PostalAddress address;	//PostalAddress	Physical address of the item.
 

@@ -16,7 +16,7 @@ import play.db.Model;
 import play.mvc.Controller;
 import play.utils.Java;
 import java.lang.reflect.Type;
-import models.basebuds.Bud;
+import models.basebuds.BudEntity;
 import play.db.Model.Factory;
 import play.db.jpa.GenericModel;
 /**
@@ -86,8 +86,8 @@ public abstract class BaseBuds extends Controller{
         }
         
         public static ObjectType get(Class<? extends Controller> controllerClass) {
-            Class<? extends Bud> entityClass = getEntityClassForController(controllerClass);
-            if (entityClass == null || !Bud.class.isAssignableFrom(entityClass)) {
+            Class<? extends BudEntity> entityClass = getEntityClassForController(controllerClass);
+            if (entityClass == null || !BudEntity.class.isAssignableFrom(entityClass)) {
                 System.out.println("NULL");
                 return null;
             }
@@ -107,13 +107,13 @@ public abstract class BaseBuds extends Controller{
         
         
         @SuppressWarnings("unchecked")
-        public static Class<? extends Bud> getEntityClassForController(Class<? extends Controller> controllerClass) {
+        public static Class<? extends BudEntity> getEntityClassForController(Class<? extends Controller> controllerClass) {
                    
             String name = controllerClass.getSimpleName().replace("$", "");
             name = "models.basebuds." + name.substring(0, name.length() - 1);
             System.out.println(name);
             try {
-                return (Class<? extends Bud>) Play.classloader.loadClass(name);
+                return (Class<? extends BudEntity>) Play.classloader.loadClass(name);
             } catch (ClassNotFoundException e) {
                 return null;
             }

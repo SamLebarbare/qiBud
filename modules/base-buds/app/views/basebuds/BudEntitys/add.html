@@ -2,7 +2,7 @@
 #{set title:'Bud' /}
 #{if flash.success}
 <div class="alert-message success">
-    <a class="close" href="@{basebuds.Buds.index()}">×</a>
+    <a class="close" href="@{basebuds.BudEntitys.index()}">×</a>
     <p><strong>&{'gg'}</strong> &{'longLife'}</p>
 </div>
 #{/if}
@@ -13,7 +13,7 @@
     <p><strong>&{'oops'}</strong>&{'lackOfInfo'}</p>
 </div>
 #{/ifErrors}
-#{form @basebuds.Buds.create(), method:'POST', enctype:'multipart/form-data'}                   
+#{form @basebuds.BudEntitys.create(), method:'POST', enctype:'multipart/form-data'}                   
 <section id="newbud">
     <div class="page-header">
         <h1>&{'mybud'}</h1>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="well">
-        <input class="btn primary" type="submit" /> <a class="btn default" href="@{basebuds.Buds.index()}">annuler</a>
+        <input class="btn primary" type="submit" /> <a class="btn default" href="@{basebuds.BudEntitys.index()}">annuler</a>
     </div>
 
 

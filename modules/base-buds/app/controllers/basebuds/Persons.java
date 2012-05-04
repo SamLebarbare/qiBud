@@ -7,7 +7,7 @@ package controllers.basebuds;
 
 import budstore.BudStore;
 import java.io.File;
-import budstore.BudStoreEntity;
+import budstore.Bud;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
@@ -33,20 +33,20 @@ public class Persons extends BaseBuds{
     
     public static void showFromUID(@Required String uid)
     {
-        show(BudStore.getInstance().getIdentifierFromUID("persons",uid));
+        show(uid);
     }
     
     
     public static void show(String uri)
     {
-        BudStoreEntity b = new BudStoreEntity(uri);
+        Bud b = new Bud(uri);
         render(b);
     }
     
     public static void getAttachment(String uri)
     {
         
-        BudStoreEntity bud = new BudStoreEntity(uri);
+        Bud bud = new Bud(uri);
         InputStream attachment = bud.attachment.attachment.get();
         
         renderBinary(attachment);
@@ -72,7 +72,7 @@ public class Persons extends BaseBuds{
         newBud.type = "persons";
         newBud.title = budTitle;
         newBud.content = content;
-        newBud.identifier = BudStore.getInstance().setIdentifier(newBud.type);
+        newBud.identifier = BudStore.getInstance().newBudIdentity(newBud.type);
         newBud.postedAt = new Date();
         newBud.save();
         

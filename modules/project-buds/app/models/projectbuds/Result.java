@@ -7,11 +7,11 @@ package models.projectbuds;
 
 
 import javax.persistence.*;
-import models.basebuds.Bud;
+import models.basebuds.BudEntity;
 import models.basebuds.Person;
 
 @Entity
-public class Result extends Bud {
+public class Result extends BudEntity {
 
 
     @ManyToOne

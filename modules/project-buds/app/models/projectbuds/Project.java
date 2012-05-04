@@ -8,11 +8,11 @@ package models.projectbuds;
 import java.util.List;
 
 import javax.persistence.*;
-import models.basebuds.Bud;
+import models.basebuds.BudEntity;
 import models.basebuds.Person;
 
 @Entity
-public class Project extends Bud {
+public class Project extends BudEntity {
     
     @OneToMany(mappedBy="project")
     public List<Mission> missions;

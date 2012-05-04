@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Person extends Bud {
+public class Person extends BudEntity {
     
     public String additionalName;	 //Text	An additional name for a Person, can be used for a middle name.
     public PostalAddress address;	//PostalAddress	Physical address of the item.

@@ -6,9 +6,10 @@ package budstore.graphstore;
 
 import java.util.ArrayList;
 import java.util.List;
-import models.basebuds.Bud;
+
+import play.Play;
+
 import org.neo4j.graphdb.Direction;
-import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.RelationshipType;
@@ -16,7 +17,8 @@ import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.index.Index;
 import org.neo4j.graphdb.index.IndexHits;
 import org.neo4j.kernel.EmbeddedGraphDatabase;
-import play.Play;
+
+import models.basebuds.BudEntity;
 
 /**
  * @author Samuel Loup aka Sam Le Barbare
@@ -44,8 +46,6 @@ public class GraphStore {
     {
         System.out.println("START: Initializing Neo4j Bud Storage...");
         nodeIndex = INSTANCE.index().forNodes("nodes");
-        registerShutdownHook(INSTANCE);
-        System.out.println("BUDSTORE: Register Shutdown Hook [OK]");
         initializeRefNodes();  
         System.out.println("BUDSTORE: Checking Bud Store Size...");
         int size = getAllBuds().size();
@@ -53,6 +53,12 @@ public class GraphStore {
         System.out.println("Initializing Neo4j Bud Storage [DONE]");
     }
 
+    public static void shudownNeo4jStore()
+    {
+        System.out.println( "STOP: Bud Storage shutdown..." );
+        INSTANCE.shutdown();
+        System.out.println( "Bud Storage shutdown [DONE]" );
+    }
     
     private static void initializeRefNodes()
     {
@@ -90,21 +96,10 @@ public class GraphStore {
         }
         
     }
-    private static void registerShutdownHook(final GraphDatabaseService graphDb) 
-    {
-        Runtime.getRuntime().addShutdownHook(new Thread() 
-        {
-            @Override
-            public void run() {
-                graphDb.shutdown();
-                System.out.println("BUDSTORE: Shutdown Hook [OK]");
-            }
-        });
-    }
 
     ////////////BUD STORAGE
     //
-    public static void storeABud(Bud aBud) 
+    public static void storeABud(BudEntity aBud) 
     {
         
         System.out.println("BUDSTORE: New TX");

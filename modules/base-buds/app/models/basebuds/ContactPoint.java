@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 
 
 @Entity
-public class ContactPoint extends Bud {
+public class ContactPoint extends BudEntity {
     
    
     

@@ -8,12 +8,12 @@ package models.projectbuds;
 
 import java.util.List;
 import javax.persistence.*;
-import models.basebuds.Bud;
+import models.basebuds.BudEntity;
 import models.basebuds.Person;
 
 
 @Entity
-public class Bug extends Bud {
+public class Bug extends BudEntity {
 
     @ManyToOne
     public Project project;
