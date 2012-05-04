@@ -47,7 +47,7 @@ public class Persons extends BaseBuds{
     {
         
         Bud bud = new Bud(uri);
-        InputStream attachment = bud.attachment.attachment.get();
+        InputStream attachment = bud.attachments().attachment.get();
         
         renderBinary(attachment);
     }

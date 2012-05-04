@@ -53,7 +53,7 @@ public class GraphStore {
         System.out.println("Initializing Neo4j Bud Storage [DONE]");
     }
 
-    public static void shudownNeo4jStore()
+    public static void shutdownNeo4jStore()
     {
         System.out.println( "STOP: Bud Storage shutdown..." );
         INSTANCE.shutdown();

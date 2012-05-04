@@ -39,13 +39,12 @@ public class BudStore {
     }
     public void store(BudEntity b,File f)
     {
+        // JPA explicit save
+        b.save();
         //First save in the graphDB
         GraphStore.storeABud(b);
         //Store the attachment
-        if(b.haveAttachment)
-        {
-            AttachmentStore.getInstance().storeAttachment(b, f);
-        }
+        AttachmentStore.getInstance().storeAttachment(b, f);
     }
     public void archive(BudEntity b)
     {

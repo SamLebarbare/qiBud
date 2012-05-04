@@ -14,15 +14,15 @@
 <div class="page-header">
     <ul class="breadcrumb">    
     </ul>      
-    <h6>qi:${b.graphdata.qi}      
+    <h6>qi:${b.graphNode().qi}      
     <span class="label">Bud</span>
-    publié le ${b.entity.postedAt}  
+    publié le ${b.entity().postedAt}  
     </h6>
 </div>
 <div class="hero-unit">
-    <h1>${b.entity.title}</h1>
-    <p>${b.entity.content}</p>
-    #{if b.entity.haveAttachment}<a href="@{basebuds.BudEntitys.getAttachment(b.uri)}">Attachment</a>#{/if}
+    <h1>${b.entity().title}</h1>
+    <p>${b.entity().content}</p>
+    #{if b.entity().haveAttachment}<a href="@{basebuds.BudEntitys.getAttachment(b.uri)}">Attachment</a>#{/if}
 </div>
 <section id="comments">
     <div class="page-header">

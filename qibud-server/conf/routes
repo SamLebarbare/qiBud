@@ -1,8 +1,46 @@
 *       /                                       module:base
 GET     /                                       Auth.index
 GET     /core                                   Core.index
-GET     /core/packages                          Core.packages
+GET     /core/packs                          Core.packs
 POST    /core/modules/details                   Core.moduleDetails                           
 GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
+
+
+GET     /buds                                       BudsControllers.buds
+GET     /buds/new                                   BudsControllers.budCreateForm
+POST    /buds                                       BudsControllers.saveNewBud
+# GET     /buds/{module}
+# GET     /buds/{module}/{role}
+
+# tous les roles du bud rajoutent de la vue à la vue de base
+GET     /bud/{identity}                             BudsControllers.bud
+# tous les roles du bud rajoutent du formulaire
+GET     /bud/{identity}/edit                        BudsControllers.budEditForm
+# tous les roles du bud rajoutent de la validation, du "comportement BudStore"
+POST    /bud/{identity}                             BudsControllers.saveBud
+# tous les roles du bud rajoutent de la validation, du "comportement BudStore"
+GET     /bud/{identity}/delete                      BudsControllers.deleteBud
+
+# seul le role pointé rajoute de la vue à la vue de base
+GET     /bud/{identity}/{pack}/{role}               BudsControllers.budByRole
+# seul le role pointé rajoute du formulaire
+GET     /bud/{identity}/{pack}/{role}/edit          BudsControllers.budEditFormByRole
+# seul le role pointé rajoute de la validation, du "comportement BudStore"
+POST    /bud/{identity}/{pack}/{role}               BudsControllers.saveBudByRole
+# seul le role pointé rajoute de la validation, du "comportement BudStore"
+GET     /bud/{identity}/{pack}/{role}/delete        BudsControllers.deleteBudByRole
+GET     /bud/{identity}/{pack}/{role}/{action}/form BudsControllers.roleActionForm
+POST    /bud/{identity}/{pack}/{role}/{action}      BudsControllers.invokeRoleAction
+
+GET     /packs                                      BudPacksController.packs
+GET     /packs/new                                  BudPacksController.packUploadForm
+POST    /packs                                      BudPacksController.uploadPack
+
+GET     /pack/{pack}                                BudPacksController.pack
+# doit pouvoir proposer un wizard d'installation si besoin ?
+GET     /pack/{pack}/configuration                  BudPacksController.packConfiguration
+POST    /pack/{pack}/configuration                  BudPacksController.savePackConfiguration
+GET     /pack/{pack}/{action}/form                  BudPacksController.actionForm
+POST    /pack/{pack}/{action}                       BudPacksController.invokeAction
 

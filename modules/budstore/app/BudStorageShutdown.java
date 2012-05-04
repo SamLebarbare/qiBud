@@ -5,7 +5,7 @@ import play.jobs.OnApplicationStop;
 import budstore.graphstore.GraphStore;
 
 @OnApplicationStop
-public class Shutdown
+public class BudStorageShutdown
         extends Job<Void>
 {
 
@@ -13,7 +13,7 @@ public class Shutdown
     public void doJob()
             throws Exception
     {
-        GraphStore.shudownNeo4jStore();
+        GraphStore.shutdownNeo4jStore();
     }
 
 }

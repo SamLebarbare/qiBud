@@ -118,22 +118,23 @@ public class AttachmentStore {
     
     public void storeAttachment(BudEntity b,File f)
     {
-        System.out.println("Storing attachment...");
-        if(f.getName().endsWith(".pdf"))
-        {
-            System.out.println("PDF detected!");
-            parseAndStorePDF(b,f);
+        if (b.haveAttachment) {
+            System.out.println("Storing attachment...");
+            if(f.getName().endsWith(".pdf"))
+            {
+                System.out.println("PDF detected!");
+                parseAndStorePDF(b,f);
+            }
+            else
+            {
+                //simple attachment
+                System.out.println("Unknow file, no meta-data extraction!");
+                BudAttachment att = new BudAttachment(f,"unknow","unknow","unknow");
+                att.setId(b.identifier);          
+                att.save();
+                att.setAttachment(f);
+            }
         }
-        else
-        {
-            //simple attachment
-            System.out.println("Unknow file, no meta-data extraction!");
-            BudAttachment att = new BudAttachment(f,"unknow","unknow","unknow");
-            att.setId(b.identifier);          
-            att.save();
-            att.setAttachment(f);
-        }
-        
     }
     
 }
